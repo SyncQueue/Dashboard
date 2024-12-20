@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SyncBot Dashboard</title>
+    <link rel="icon" href="pic.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1b1b1b;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ffd6;
+            text-shadow: 0 0 20px #00ffd6, 0 0 30px #00ffd6, 0 0 40px #00ffd6;
+        }
+        header img {
+            width: 50px;
+            margin-right: 15px;
+            filter: drop-shadow(0 0 5px #00ffd6);
+        }
+        .dashboard-container {
+            background: linear-gradient(45deg, #2a2a2a, #0a0a0a);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            width: 80%;
+            max-width: 1000px;
+            text-align: center;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            font-size: 2.2rem;
+            color: #00ffd6;
+            text-shadow: 0 0 20px #00ffd6, 0 0 40px #00ffd6;
+        }
+        .status {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #39ff14;
+            text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14;
+        }
+        .contact-link {
+            display: inline-block;
+            background-color: #00ffd6;
+            padding: 15px 30px;
+            margin-top: 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        .contact-link:hover {
+            background-color: #ff3eff;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 63, 255, 0.7);
+        }
+        .premium-plans {
+            display: flex;
+            justify-content: space-around;
+        }
+        .plan {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            width: 25%;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+        }
+        .plan h3 {
+            font-size: 1.8rem;
+            color: #ff3eff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .coming-soon {
+            font-size: 1.2rem;
+            color: #ffcc00;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #aaa;
+            text-align: center;
+            animation: fadeIn 3s ease-in-out infinite;
+        }
+
+        
+        .used-in-servers {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            width: 25%;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            margin-top: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ffcc00;
+            font-size: 1.2rem;
+        }
+
+        .used-in-servers h4 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .used-in-servers p {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #39ff14;
+        }
+
+        .used-in-servers:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.7);
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 15px #00ffd6, 0 0 30px #00ffd6, 0 0 45px #00ffd6;
+            }
+            100% {
+                box-shadow: 0 0 25px #00ffd6, 0 0 50px #00ffd6, 0 0 75px #00ffd6;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="pic.png" alt="SyncBot Icon">
+    SyncBot
+</header>
+
+<div class="dashboard-container">
+    <section class="section">
+        <h2>Welcome to SyncBot Dashboard</h2>
+        <div class="status">Bot Status: Online</div>
+    </section>
+
+    <section class="section">
+        <a href="https://discord.com/oauth2/authorize?client_id=1318631556998238339&scope=bot&permissions=YOUR_PERMISSION_INTEGER" class="contact-link" target="_blank">
+            Invite me to your server
+        </a>
+    </section>
+
+    <section class="section">
+        <h2>Premium Plan</h2>
+        <div class="premium-plans">
+            <div class="plan">
+                <h3>Tier 1</h3>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="plan">
+                <h3>Tier 2</h3>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+            <div class="plan">
+                <h3>Lifetime</h3>
+                <p class="coming-soon">Coming Soon</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <div class="used-in-servers">
+        <h4>Used in Server</h4>
+        <p>1</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; Made with ❤️ by Asphalt & qSlxyed</p>
+</footer>
+
+<script>
+    
+    document.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+
+    
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "F12" || event.key === "f12") {
+            event.preventDefault();
+        }
+    });
+
+    
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+    });
+</script>
+
+</body>
+</html>
