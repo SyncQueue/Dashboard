@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Futuristic Community</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        
+        .neon-text {
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ff2a68;
+            letter-spacing: 5px;
+            position: relative;
+            animation: neonGlow 1.5s ease-in-out infinite alternate;
+        }
+
+        
+        @keyframes neonGlow {
+            0% {
+                text-shadow: 
+                    0 0 5px #ff2a68, 
+                    0 0 10px #ff2a68, 
+                    0 0 20px #ff2a68, 
+                    0 0 40px #ff2a68, 
+                    0 0 80px #ff2a68, 
+                    0 0 90px #ff2a68, 
+                    0 0 120px #ff2a68;
+            }
+            100% {
+                text-shadow: 
+                    0 0 10px #ff2a68, 
+                    0 0 20px #ff2a68, 
+                    0 0 30px #ff2a68, 
+                    0 0 50px #ff2a68, 
+                    0 0 100px #ff2a68, 
+                    0 0 150px #ff2a68, 
+                    0 0 200px #ff2a68;
+            }
+        }
+
+        
+        .description {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-top: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        
+        .join-btn {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: white;
+            background-color: #ff2a68;
+            border-radius: 5px;
+            border: 2px solid #000000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .join-btn:hover {
+            background-color: white;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <div class="neon-text">
+        Community
+    </div>
+
+    
+    <div class="description">
+        Join SyncBot Community Server
+    </div>
+
+    
+    <a href="https://discord.gg/HBWM6AhNXG" class="join-btn">Join Now</a>
+
+    <script>
+    
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+    
+        
+        document.addEventListener('keydown', function(event) {
+            
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+            
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+            }
+            
+            if (event.ctrlKey && event.key === "U") {
+                event.preventDefault();
+            }
+        });
+    </script>    
+
+</body>
+</html>

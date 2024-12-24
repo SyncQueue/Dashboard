@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Syncbot</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #111111; 
+            color: #e0e0e0; 
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); 
+            backdrop-filter: blur(10px); 
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.3s ease;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo-img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        header .brand-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #00fff7; 
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 30px #00fff7;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #00fff7;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00fff7;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+        }
+
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.8); 
+            animation: fadeIn 1.5s ease-out;
+            backdrop-filter: blur(15px); 
+        }
+
+        .hero-content {
+            text-align: left;
+            margin-right: 50px;
+            max-width: 50%;
+            opacity: 0;
+            animation: fadeInLeft 1.5s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #00fff7;
+            text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #b0b0b0;
+        }
+
+        .cta-button {
+            background-color: #00fff7;
+            color: #111;
+            padding: 15px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+        }
+
+        .cta-button:hover {
+            background-color: #0088cc;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #0088cc;
+        }
+
+        .hero-img {
+            width: 400px;
+            height: auto;
+            opacity: 0;
+            animation: fadeInRight 1.5s ease-out forwards;
+        }
+
+        
+        .features {
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: #00fff7;
+            text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+        }
+
+        .features-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+            width: 60%;
+        }
+
+        .feature-item {
+            font-size: 1.25rem;
+            color: #b0b0b0;
+        }
+
+        .feature-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            height: 100%;
+            opacity: 0;
+            animation: fadeInRight 1.5s ease-out forwards;
+        }
+
+        .feature-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+        }
+
+        
+        .premium {
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            margin-top: 20px;
+        }
+
+        .premium h2 {
+            text-align: center;
+            color: #00fff7;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+        }
+
+        .tier {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .tier div {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+            transition: transform 0.3s ease;
+        }
+
+        .tier div:hover {
+            transform: scale(1.05);
+        }
+
+        .tier h3 {
+            color: #00fff7;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .tier p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .purchase-btn {
+            background-color: #00fff7;
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .purchase-btn:hover {
+            background-color: #0088cc;
+        }
+
+        
+        .support-community {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+        }
+
+        .support {
+            text-align: center;
+            width: 48%;
+        }
+
+        .support h2 {
+            color: #00fff7;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .support p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .support .cta-button {
+            background-color: #00fff7;
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .support .cta-button:hover {
+            background-color: #0088cc;
+        }
+
+        .community {
+            text-align: center;
+            width: 48%;
+        }
+
+        .community h2 {
+            color: #00fff7;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .community p {
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .community .cta-button {
+            background-color: #00fff7;
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .community .cta-button:hover {
+            background-color: #0088cc;
+        }
+
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgb(255, 0, 255), 0 0 20px rgb(0, 255, 255), 0 0 30px rgb(0, 255, 255);
+            }
+            50% {
+                text-shadow: 0 0 20px rgb(255, 0, 255), 0 0 40px rgb(0, 255, 255), 0 0 50px rgb(0, 255, 255);
+            }
+            100% {
+                text-shadow: 0 0 10px rgb(255, 0, 255), 0 0 20px rgb(0, 255, 255), 0 0 30px rgb(0, 255, 255);
+            }
+        }
+
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #b0b0b0;
+            font-size: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 15px #00fff7;
+            animation: glow 2s ease-in-out infinite;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="pic.png" alt="Syncbot Logo" class="logo-img">
+            <span class="brand-name">Syncbot</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#premium">Premium</a></li>
+                <li><a href="#support">Support</a></li>
+                <li><a href="#community">Community</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Syncbot: The Ultimate Discord Queue Bot for Competitive Servers</h1>
+            <p>Designed to enhance your Competitive Server even further</p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1318631556998238339&permissions=8&integration_type=0&scope=bot" class="cta-button">Invite Syncbot to your server</a>
+        </div>
+        <div>
+            <img src="pic.png" alt="Syncbot Image" class="hero-img">
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <div class="features-container">
+            <div class="features-list">
+                <div class="feature-item">1. Soon</div>
+                <div class="feature-item">2. Soon</div>
+                <div class="feature-item">3. Soon</div>
+                <div class="feature-item">4. Soon</div>
+                <div class="feature-item">6. Soon</div>
+                <div class="feature-item">7. Soon</div>
+                <div class="feature-item">8. Soon</div>
+                <div class="feature-item">9. Soon</div>
+                <div class="feature-item">10. Soon</div>
+            </div>
+            <div class="feature-img">
+                <img src="image.png" alt="Feature Image">
+            </div>
+        </div>
+    </section>
+
+    <section id="premium" class="premium">
+        <h2>Premium Tiers</h2>
+        <div class="tier">
+            <div>
+                <h3>Tier 1</h3>
+                <p>Details coming soon.</p>
+                <a href="purchase.html" class="purchase-btn">Purchase</a>
+            </div>
+            <div>
+                <h3>Tier 2</h3>
+                <p>Details coming soon.</p>
+                <a href="purchase.html" class="purchase-btn">Purchase</a>
+            </div>
+            <div>
+                <h3>Tier 3</h3>
+                <p>Details coming soon.</p>
+                <a href="purchase.html" class="purchase-btn">Purchase</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="support" class="support-community">
+        <div class="support">
+            <h2>Need Support?</h2>
+            <p>Click below to get support.</p>
+            <a href="https://discord.gg/HBWM6AhNXG" class="cta-button">Get Support</a>
+        </div>
+        <div class="community">
+            <h2>Join the Sync Community</h2>
+            <p>Stay connected with us!</p>
+            <a href="community.html" class="cta-button">Join Community</a>
+        </div>
+    </section>
+
+
+<section id="discord-widget" style="display: flex; justify-content: flex-end; padding: 50px 20px; align-items: center;">
+    <div style="max-width: 400px; text-align: left; color: #b0b0b0; font-size: 1.2rem; margin-right: 20px;">
+        <p>Join our Discord to stay up to date and connect with the community!</p>
+    </div>
+    <div style="flex-shrink: 0; margin-right: 20px;">
+        
+        <iframe src="https://discord.com/widget?id=1318630143115137140&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+    </div>
+    <div style="flex-shrink: 0;">
+        <a href="community.html" class="cta-button" style="padding: 10px 20px; text-align: center; font-weight: bold; color: #111; background-color: #00fff7; border-radius: 50px; text-decoration: none; transition: background-color 0.3s ease; box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;">
+            Join Sync Community
+        </a>
+    </div>
+</section>
+
+<script>
+    
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+
+    
+    document.addEventListener('keydown', function(event) {
+        
+        if (event.key === "F12") {
+            event.preventDefault();
+        }
+        
+        if (event.ctrlKey && event.shiftKey && event.key === "I") {
+            event.preventDefault();
+        }
+        
+        if (event.ctrlKey && event.key === "U") {
+            event.preventDefault();
+        }
+    });
+</script>
+
+        
+        <footer>
+            <p>&copy; Made with ❤️ by Slayed ✨</p>
+        </footer>
+</body>
+</html>

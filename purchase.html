@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Futuristic Neon Effect</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        
+        .neon-text {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff2a68;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 5px;
+            position: relative;
+            animation: neonAnimation 1.5s ease-in-out infinite alternate;
+        }
+
+        
+        @keyframes neonAnimation {
+            0% {
+                text-shadow: 0 0 5px #ff2a68, 0 0 10px #ff2a68, 0 0 20px #ff2a68, 0 0 40px #ff2a68, 0 0 80px #ff2a68, 0 0 90px #ff2a68, 0 0 120px #ff2a68;
+            }
+            100% {
+                text-shadow: 0 0 10px #ff2a68, 0 0 20px #ff2a68, 0 0 30px #ff2a68, 0 0 50px #ff2a68, 0 0 100px #ff2a68, 0 0 120px #ff2a68, 0 0 150px #ff2a68;
+            }
+        }
+
+        
+        .message-box {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 2px solid #ff2a68;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <div class="neon-text">
+        Error
+    </div>
+
+    
+    <div class="message-box">
+        Purchasing Item isn't available yet. Please try again later.
+    </div>
+
+    <script>
+    
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault();
+        });
+    
+        
+        document.addEventListener('keydown', function(event) {
+            
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+            
+            if (event.ctrlKey && event.shiftKey && event.key === "I") {
+                event.preventDefault();
+            }
+            
+            if (event.ctrlKey && event.key === "U") {
+                event.preventDefault();
+            }
+        });
+    </script>    
+
+</body>
+</html>
